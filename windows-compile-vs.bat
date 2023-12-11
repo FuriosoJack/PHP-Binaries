@@ -260,8 +260,6 @@ call configure^
  --with-mp=auto^
  --with-prefix=pocketmine-php-bin^
  --%PHP_HAVE_DEBUG%^
- --disable-all^
- --disable-cgi^
  --enable-cli^
  --enable-zts^
  --enable-pdo^
@@ -296,6 +294,7 @@ call configure^
  --with-dom^
  --with-gd=shared^
  --with-gmp^
+ --with-session^
  --with-iconv^
  --with-leveldb=shared^
  --with-libdeflate=shared^

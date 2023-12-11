@@ -288,6 +288,7 @@ call configure^
  --enable-xxhash^
  --enable-zip^
  --enable-zlib^
+ --enable-session^
  --with-bz2=shared^
  --with-crypto=shared^
  --with-curl^
@@ -301,6 +302,8 @@ call configure^
  --with-libxml^
  --with-mysqli=shared^
  --with-mysqlnd^
+ --with-soap^
+ --with-ftp^
  --with-openssl^
  --with-pcre-jit^
  %THREAD_EXT_FLAGS%^
@@ -321,13 +324,6 @@ nmake >>"%log_file%" 2>&1 || call :pm-fatal-error "Error compiling PHP"
 call :pm-echo "Assembling artifacts..."
 nmake snap >>"%log_file%" 2>&1 || call :pm-fatal-error "Error assembling artifacts"
 
-call :pm-echo "Removing unneeded dependency DLLs..."
-REM remove ICU DLLs copied unnecessarily by nmake snap - this needs to be removed if we ever have ext/intl as a dependency
-del /q "%SOURCES_PATH%\php-src\%ARCH%\Release_TS\php-%PHP_DISPLAY_VER%\icu*.dll" 2>&1
-REM remove enchant dependencies which are unnecessarily copied - this needs to be removed if we ever have ext/enchant as a dependency
-del /q "%SOURCES_PATH%\php-src\%ARCH%\Release_TS\php-%PHP_DISPLAY_VER%\glib-*.dll" 2>&1
-del /q "%SOURCES_PATH%\php-src\%ARCH%\Release_TS\php-%PHP_DISPLAY_VER%\gmodule-*.dll" 2>&1
-rmdir /s /q "%SOURCES_PATH%\php-src\%ARCH%\Release_TS\php-%PHP_DISPLAY_VER%\lib\enchant\" 2>&1
 
 call :pm-echo "Copying artifacts..."
 cd /D "%outpath%"
@@ -335,7 +331,7 @@ mkdir bin
 move "%SOURCES_PATH%\php-src\%ARCH%\%OUT_PATH_REL%_TS\php-%PHP_DISPLAY_VER%" bin\php
 cd /D bin\php
 
-set php_ini=php.ini
+set php_ini=php2.ini
 call :pm-echo "Generating php.ini..."
 (echo ;Custom PocketMine-MP php.ini file)>"%php_ini%"
 (echo memory_limit=1024M)>>"%php_ini%"

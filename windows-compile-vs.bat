@@ -289,6 +289,7 @@ call configure^
  --enable-zip^
  --enable-zlib^
  --enable-session^
+ --enable-soap^
  --with-bz2=shared^
  --with-crypto=shared^
  --with-curl^

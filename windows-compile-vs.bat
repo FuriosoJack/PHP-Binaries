@@ -302,7 +302,7 @@ call configure^
  --with-libxml^
  --with-mysqli=shared^
  --with-mysqlnd^
- --with-soap^
+ --with-soap=shared^
  --with-ftp^
  --with-openssl^
  --with-pcre-jit^
@@ -316,6 +316,11 @@ call configure^
  --with-yaml^
  --with-pdo-mysql^
  --with-pdo-sqlite^
+ --with-xsl=shared^
+ --with-intl^
+ --with-imap^
+ --with-exif^
+ --with-ffi=shared^
  --without-readline >>"%log_file%" 2>&1 || call :pm-fatal-error "Error configuring PHP"
 
 call :pm-echo "Compiling PHP..."

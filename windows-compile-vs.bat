@@ -290,6 +290,8 @@ call configure^
  --enable-zlib^
  --enable-session^
  --enable-soap^
+ --enable-pcntl^
+ --enable-posix^
  --with-bz2=shared^
  --with-crypto=shared^
  --with-curl^
@@ -337,7 +339,7 @@ mkdir bin
 move "%SOURCES_PATH%\php-src\%ARCH%\%OUT_PATH_REL%_TS\php-%PHP_DISPLAY_VER%" bin\php
 cd /D bin\php
 
-set php_ini=php2.ini
+set php_ini=php.ini
 call :pm-echo "Generating php.ini..."
 (echo ;Custom PocketMine-MP php.ini file)>"%php_ini%"
 (echo memory_limit=1024M)>>"%php_ini%"

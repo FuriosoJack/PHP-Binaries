@@ -322,7 +322,7 @@ call configure^
  --with-xsl=shared^
  --with-intl^
  --with-imap^
- --with-exif^
+ --with-exif=shared^
  --with-ffi=shared^
  --without-readline >>"%log_file%" 2>&1 || call :pm-fatal-error "Error configuring PHP"
 

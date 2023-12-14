@@ -290,6 +290,7 @@ call configure^
  --enable-zlib^
  --enable-session^
  --enable-soap^
+ --enable-exif^
  --enable-pcntl^
  --enable-posix^
  --with-bz2=shared^
